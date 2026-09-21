@@ -12,10 +12,19 @@
 
 ## 前提条件
 
+必要な環境:
+
+- Git で管理された通常のテキストリポジトリとして扱えること。
+- Markdown を読める Agent / Harness / Editor から参照できること。
+- `skills/` を利用する場合は、利用する Agent Harness が Markdown ベースのSkillまたは同等の参照設定を読み込めること。
+- 実際に workflow を実行する環境では、必要な Z ツール（`zintent` / `ztasks` / `zconfig`）が別途インストールされ、公開 CLI / Protocol として利用できること。
+
+制約:
+
 - Z Ecosystem は、人間が確認可能な Artifact を工程間で受け渡す Human-controlled Artifact Pipeline として扱う。
 - `zintent` / `ztasks` / `zconfig` は、それぞれ独立したツールリポジトリとして Domain ロジックと正規Contractを所有する。
 - Agent Skill は工程を編成するが、状態遷移・検証・永続化・不変条件は各ツールの公開 CLI / Protocol / Core が所有する。
-- Pi / Codex / macOS / shell などの machine・harness 固有設定は dotfiles 側に残す。
+- Pi / Codex / macOS / shell などの machine・harness 固有設定はこのリポジトリに置かない。
 - runtime state、lock、cache、session、snapshot、credential、secret はこのリポジトリに置かない。
 
 ## 管理対象
@@ -60,7 +69,6 @@ zecosystem/
 | `hib2018/zintent` | Intent review / approval のDomain、CLI/TUI、Schema、Contract、tool-specific Skill |
 | `hib2018/ztasks` | Task execution monitoring、Runtime Protocol、Event、source adapter |
 | `hib2018/zconfig` | Configuration review、proposal/revision/apply Protocol、Schema、security rule |
-| `hib2018/dotfiles` | Mac環境、Pi/Codex等のharness設定、symlink配線 |
 
 ## Spec Kit の扱い
 

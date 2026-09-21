@@ -6,9 +6,19 @@ This repository is the Source of Truth for Z Ecosystem elements that are not own
 
 ## Prerequisites
 
-- The reader understands the Z Ecosystem as a human-controlled artifact pipeline.
+Required environment:
+
+- A normal Git-managed text repository.
+- An agent, harness, or editor that can read Markdown documentation.
+- When using `skills/`, an agent harness that can load Markdown-based skills or an equivalent reference configuration.
+- For actual workflow execution, the required Z tools (`zintent`, `ztasks`, and `zconfig`) must be installed separately and available through their public CLI/protocol surfaces.
+
+Constraints:
+
+- The Z Ecosystem is treated as a human-controlled artifact pipeline.
 - Tool repositories remain separate: `zintent`, `ztasks`, and `zconfig` each own their domain logic and normative contracts.
-- Harness and machine configuration remains outside this repository, primarily in dotfiles or each harness configuration directory.
+- Agent skills orchestrate workflow stages; tool CLIs/protocols/cores own state transitions, validation, persistence, and invariants.
+- Harness and machine configuration such as Pi, Codex, macOS, shell, and package-manager settings must not be stored here.
 - Runtime state, sessions, locks, caches, snapshots, and credentials must not be stored here.
 
 ## Scope
