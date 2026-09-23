@@ -17,7 +17,7 @@ Human Request
 
 | Stage | Artifact | Owner |
 |---|---|---|
-| `zintent-interpret` | Japanese external Draft JSON plus `<project>/draft/<slug>.source.md` | Skill-authored external input only |
+| `zintent-interpret` | External Draft JSON in the human's interaction language plus `<project>/draft/<slug>.source.md` | Skill-authored external input only |
 | `zintent workspace` | imported Intent revisions and Approved Intent Snapshot | public `zintent` CLI/TUI and core |
 | `zintent-ingest` | minimal approved meaning/provenance record when requested | Global ingest skill |
 | `speckit-handoff` | one feature request passed to Project Spec Kit | Global handoff skill |

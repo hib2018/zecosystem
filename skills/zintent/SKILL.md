@@ -16,7 +16,8 @@ separate from Spec Kit planning and downstream execution.
 - For final approval of an exact `review_complete` revision, read
   [references/approval.md](references/approval.md).
 - For Draft creation from natural-language input, use the `zintent-interpret` Skill first. It must
-  generate a Japanese external Draft and prepare the workspace/draft files before `zintent` is run.
+  generate an external Draft in the human's interaction language and prepare the workspace/draft
+  files before `zintent` is run.
 - For a workspace containing multiple Intents or an external schema-valid Draft, launch
   `zintent workspace <workspace>` in an interactive TTY. Do not invent a canonical Intent or write
   zintent store files directly.

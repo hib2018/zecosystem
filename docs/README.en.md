@@ -39,7 +39,7 @@ Out of scope:
 
 ## Initial contents
 
-- `skills/zintent-interpret/`: generate a Japanese external Draft from a natural-language request and prepare the `intents/` and `draft/` files needed before running `zintent`.
+- `skills/zintent-interpret/`: generate an external Draft in the human's interaction language from a natural-language request and prepare the `intents/` and `draft/` files needed before running `zintent`.
 - `skills/zintent/`: global Meaning Gate orchestration policy for using public `zintent` CLI/TUI safely.
 - `skills/zintent-ingest/`: import already-approved zintent output into project/context only, without Spec Kit or implementation.
 - `skills/speckit-handoff/`: reusable handoff policy from an Approved Intent Snapshot to a project-owned Spec Kit specify workflow.
@@ -53,7 +53,7 @@ Out of scope:
 
 ```text
 Human Request
-  -> zintent-interpret: create Japanese Draft and prepare <project>/intents + <project>/draft
+  -> zintent-interpret: create a Draft in the human's interaction language and prepare <project>/intents + <project>/draft
   -> zintent workspace: import Draft, human reviews/approves meaning
   -> Approved Intent Snapshot
   -> zintent-ingest: optionally import approved output only and stop
@@ -67,7 +67,7 @@ Human Request
 Key boundaries:
 
 - `zintent-interpret` creates only external Draft input and never edits zintent store internals.
-- Draft item statements are Japanese and individually reviewable.
+- Draft item statements use the human's interaction language and remain individually reviewable.
 - After review/approval, `zintent-ingest` can record approved output only when explicitly requested.
 - Review, approval, handoff, planning, and execution each require explicit human intent.
 - `spec.md`, `plan.md`, and `tasks.md` belong to the project repository's Spec Kit workflow.

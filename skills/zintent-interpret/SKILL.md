@@ -1,6 +1,6 @@
 ---
 name: zintent-interpret
-description: Generate a Japanese zintent Draft JSON from a human natural-language request and prepare the workspace/draft files needed before launching zintent. Use when the human asks to create, generate, or interpret an Intent/Draft from a request; do not use for review, approval, planning, or implementation.
+description: Generate a zintent Draft JSON in the human's interaction language from a natural-language request and prepare the workspace/draft files needed before launching zintent. Use when the human asks to create, generate, or interpret an Intent/Draft from a request; do not use for review, approval, planning, or implementation.
 ---
 
 # zintent Draft Interpretation
@@ -11,9 +11,11 @@ transitions, validation, snapshots, and store persistence.
 ## Invocation contract
 
 Use this Skill when the human asks to generate an Intent Draft from a natural-language request.
-The Draft content must be written in Japanese, even if the source request mixes languages. Preserve
-meaning; do not add implementation plan, architecture, tasks, acceptance criteria, or scope not
-present in the request.
+Write the Draft's human-readable content in the language the human uses to address the agent. If the
+request mixes languages, use its dominant language unless the human explicitly chooses another.
+Preserve meaning; do not translate schema keys, enum values, IDs, paths, or other protocol literals,
+and do not add implementation plan, architecture, tasks, acceptance criteria, or scope not present
+in the request.
 
 If the request is too ambiguous to split into reviewable items, ask the smallest clarifying question.
 Otherwise create the minimal useful Draft: usually 1-5 items.
@@ -49,17 +51,17 @@ Generate a schema-valid version `1.0.0` revision compatible with zintent Draft i
 - `actor.identity_source`: `explicit_fallback`
 - `actor.authenticated`: `false`
 - `operation.type`: `start_review`
-- each item has `review_status: "unreviewed"`, `included_in_approval: true`, and Japanese
-  `statement`
+- each item has `review_status: "unreviewed"`, `included_in_approval: true`, and a `statement` in
+  the human's interaction language
 - provenance should use `content_origin: "source"`, `operation_type: "draft_interpretation"`, and
   reference the generated revision/operation IDs
 
 Use standard-library UUID/timestamp generation; do not add dependencies. `revision_hash` may be a
 64-character zero placeholder for external Draft input; zintent import will publish governed state.
 
-## Japanese item style
+## Item language and style
 
-- Write each `statement` as one concise Japanese sentence.
+- Write each `statement` as one concise sentence in the human's interaction language.
 - Make items individually reviewable by the human.
 - Keep requirements at meaning level: what outcome is intended, not how to implement it.
 - Mark uncertainty as its own reviewable item only when the source explicitly contains it; otherwise

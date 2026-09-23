@@ -87,7 +87,11 @@ snapshot path returned by `zintent approve`.
 2. Read the Project's `.pi/prompts/speckit.specify.md` completely and follow that version as the
    authoritative specification workflow.
 3. Build the feature description from approved item statements and applicable source references.
-   Preserve meaning; do not silently add, omit, weaken, or reinterpret an approved item.
+   Preserve meaning; do not silently add, omit, weaken, or reinterpret an approved item. Write
+   human-readable generated prose in the language the human uses to address the agent; if the
+   interaction mixes languages, use its dominant language unless the human explicitly chooses
+   another. Keep IDs, paths, commands, code, schema keys, and protocol literals unchanged, and carry
+   this language convention into later Project-local Spec Kit artifacts, especially `tasks.md`.
 4. Run the official Spec Kit specify workflow to create exactly one feature specification for the
    current snapshot. For multiple selections, repeat this step once per selected snapshot.
 5. Record the snapshot path, snapshot ID, Intent ID, confirmed revision ID, and approved revision ID

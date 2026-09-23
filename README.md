@@ -59,7 +59,7 @@ zecosystem/
 
 初期Skill:
 
-- `skills/zintent-interpret/`: 自然言語要求から日本語の外部Draftを生成し、`zintent` 実行前に必要な `intents/` と `draft/` ファイルを整える方針
+- `skills/zintent-interpret/`: 自然言語要求からユーザーの対話言語に合わせた外部Draftを生成し、`zintent` 実行前に必要な `intents/` と `draft/` ファイルを整える方針
 - `skills/zintent/`: public `zintent` CLI/TUI を安全に利用する Meaning Gate 編成方針
 - `skills/zintent-ingest/`: 承認済み zintent 出力だけをProject/contextへ取り込み、Spec Kitや実装へ進めない方針
 - `skills/speckit-handoff/`: Approved Intent Snapshot から Project-owned Spec Kit specify workflow へ渡す方針
@@ -76,7 +76,7 @@ zecosystem/
 
 ```text
 Human Request
-  -> zintent-interpret: 日本語Draftを作成し、<project>/intents と <project>/draft を準備
+  -> zintent-interpret: ユーザーの対話言語に合わせたDraftを作成し、<project>/intents と <project>/draft を準備
   -> zintent workspace: Draftをimportし、人間がMeaningをreview/approve
   -> Approved Intent Snapshot
   -> zintent-ingest: 必要なら承認済み出力だけをProject/contextへ取り込んで停止
@@ -90,7 +90,7 @@ Human Request
 重要な境界:
 
 - `zintent-interpret` が作るのは外部Draftだけで、zintent store内部は直接変更しない。
-- Draft itemのstatementは日本語で、人間が個別reviewできる粒度にする。
+- Draft itemのstatementはユーザーの対話言語に合わせ、人間が個別reviewできる粒度にする。
 - `zintent` のreview/approval後は、明示依頼があれば `zintent-ingest` で承認済み出力だけを取り込んで停止できる。
 - `zintent` のreview/approvalとSpec Kit handoffは、人間の明示依頼なしに次工程へ進めない。
 - `spec.md` / `plan.md` / `tasks.md` はProject repositoryのSpec Kitが所有する。

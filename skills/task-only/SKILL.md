@@ -64,7 +64,10 @@ Provenance: <snapshot path/id if applicable, else human request timestamp/contex
 
 Rules:
 
-- Write `tasks.md` in Japanese, including its title, metadata descriptions, task text, and notes.
+- Write the human-readable parts of `tasks.md` in the language the human uses to address the agent,
+  including its title, metadata descriptions, task text, and notes. If the request mixes languages,
+  use its dominant language unless the human explicitly chooses another. Keep required IDs, markers,
+  file paths, commands, and protocol literals unchanged.
 - Tasks are the canonical task definition for monitoring.
 - Keep tasks small, dependency ordered, and directly executable.
 - Include at least one verification task for non-trivial code changes.
