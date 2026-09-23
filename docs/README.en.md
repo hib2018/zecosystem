@@ -44,6 +44,7 @@ Out of scope:
 - `instructions/agent-principles.md`: shared agent principles for Z Ecosystem work.
 - `docs/artifact-flow.md`: high-level artifact pipeline boundaries.
 - `docs/architecture.md`: ownership boundaries between this repository and tool repositories.
+- `docs/glossary.md`: Japanese cross-tool glossary for zecosystem, zintent, ztasks, and zconfig.
 - `docs/zconfig-notes.md`: notes for future extraction candidates from zconfig.
 
 ## Related repositories

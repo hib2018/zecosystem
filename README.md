@@ -80,5 +80,6 @@ zecosystem/
 
 - [Architecture Boundaries](docs/architecture.md)
 - [Artifact Flow](docs/artifact-flow.md)
+- [Z Ecosystem 用語集](docs/glossary.md)
 - [zconfig Investigation Notes](docs/zconfig-notes.md)
 - [English README](docs/README.en.md)
