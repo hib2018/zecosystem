@@ -64,6 +64,7 @@ Provenance: <snapshot path/id if applicable, else human request timestamp/contex
 
 Rules:
 
+- Write `tasks.md` in Japanese, including its title, metadata descriptions, task text, and notes.
 - Tasks are the canonical task definition for monitoring.
 - Keep tasks small, dependency ordered, and directly executable.
 - Include at least one verification task for non-trivial code changes.
