@@ -39,6 +39,7 @@ Out of scope:
 
 ## Initial contents
 
+- `skills/zintent-interpret/`: generate a Japanese external Draft from a natural-language request and prepare the `intents/` and `draft/` files needed before running `zintent`.
 - `skills/zintent/`: global Meaning Gate orchestration policy for using public `zintent` CLI/TUI safely.
 - `skills/speckit-handoff/`: reusable handoff policy from an Approved Intent Snapshot to a project-owned Spec Kit specify workflow.
 - `instructions/agent-principles.md`: shared agent principles for Z Ecosystem work.
@@ -46,6 +47,27 @@ Out of scope:
 - `docs/architecture.md`: ownership boundaries between this repository and tool repositories.
 - `docs/glossary.md`: Japanese cross-tool glossary for zecosystem, zintent, ztasks, and zconfig.
 - `docs/zconfig-notes.md`: notes for future extraction candidates from zconfig.
+
+## Standard workflow
+
+```text
+Human Request
+  -> zintent-interpret: create Japanese Draft and prepare <project>/intents + <project>/draft
+  -> zintent workspace: import Draft, human reviews/approves meaning
+  -> Approved Intent Snapshot
+  -> speckit-handoff: pass to project-local Spec Kit specify workflow
+  -> spec.md -> plan.md -> tasks.md
+  -> ztasks: monitor execution against tasks.md
+  -> Verification / Execution Result
+  -> zconfig only when a configuration change needs guarded review
+```
+
+Key boundaries:
+
+- `zintent-interpret` creates only external Draft input and never edits zintent store internals.
+- Draft item statements are Japanese and individually reviewable.
+- Review, approval, handoff, planning, and execution each require explicit human intent.
+- `spec.md`, `plan.md`, and `tasks.md` belong to the project repository's Spec Kit workflow.
 
 ## Related repositories
 

@@ -59,6 +59,7 @@ zecosystem/
 
 初期Skill:
 
+- `skills/zintent-interpret/`: 自然言語要求から日本語の外部Draftを生成し、`zintent` 実行前に必要な `intents/` と `draft/` ファイルを整える方針
 - `skills/zintent/`: public `zintent` CLI/TUI を安全に利用する Meaning Gate 編成方針
 - `skills/speckit-handoff/`: Approved Intent Snapshot から Project-owned Spec Kit specify workflow へ渡す方針
 
@@ -69,6 +70,27 @@ zecosystem/
 | `hib2018/zintent` | Intent review / approval のDomain、CLI/TUI、Schema、Contract、tool-specific Skill |
 | `hib2018/ztasks` | Task execution monitoring、Runtime Protocol、Event、source adapter |
 | `hib2018/zconfig` | Configuration review、proposal/revision/apply Protocol、Schema、security rule |
+
+## 標準ワークフロー
+
+```text
+Human Request
+  -> zintent-interpret: 日本語Draftを作成し、<project>/intents と <project>/draft を準備
+  -> zintent workspace: Draftをimportし、人間がMeaningをreview/approve
+  -> Approved Intent Snapshot
+  -> speckit-handoff: Project-local Spec Kit specify workflowへ渡す
+  -> spec.md -> plan.md -> tasks.md
+  -> ztasks: tasks.mdに対する実行監視
+  -> Verification / Execution Result
+  -> 必要な場合のみ zconfig: 設定変更の提案・確認・適用
+```
+
+重要な境界:
+
+- `zintent-interpret` が作るのは外部Draftだけで、zintent store内部は直接変更しない。
+- Draft itemのstatementは日本語で、人間が個別reviewできる粒度にする。
+- `zintent` のreview/approvalとSpec Kit handoffは、人間の明示依頼なしに次工程へ進めない。
+- `spec.md` / `plan.md` / `tasks.md` はProject repositoryのSpec Kitが所有する。
 
 ## Spec Kit の扱い
 

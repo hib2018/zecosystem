@@ -2,6 +2,7 @@
 
 ```text
 Human Request
+  -> zintent-interpret Draft Preparation
   -> zintent Meaning Gate
   -> Approved Intent Snapshot
   -> Project-owned Spec Kit Definition Pipeline
@@ -11,8 +12,20 @@ Human Request
   -> optional zconfig Configuration Review Boundary
 ```
 
+## Stage responsibilities
+
+| Stage | Artifact | Owner |
+|---|---|---|
+| `zintent-interpret` | Japanese external Draft JSON plus `<project>/draft/<slug>.source.md` | Skill-authored external input only |
+| `zintent workspace` | imported Intent revisions and Approved Intent Snapshot | public `zintent` CLI/TUI and core |
+| `speckit-handoff` | one feature request passed to Project Spec Kit | Global handoff skill |
+| Spec Kit | `spec.md`, `plan.md`, `tasks.md` | Project repository |
+| `ztasks` | execution monitoring state and result evidence | public `ztasks` tool |
+| `zconfig` | configuration proposal/revision/apply artifacts | public `zconfig` tool |
+
 ## Boundaries
 
+- `zintent-interpret` prepares only external Draft input: `<project>/intents/`, `<project>/draft/`, source note, and Draft JSON. It never edits zintent store internals.
 - `zintent` answers whether the interpreted meaning is approved by the human. It does not plan implementation.
 - Spec Kit owns project-local definition artifacts. Global skills may hand off approved content but must not replace the project's installed workflow.
 - `ztasks` monitors execution against a task definition. Runtime state does not redefine `tasks.md`.
