@@ -20,6 +20,8 @@ separate from Spec Kit planning and downstream execution.
 - For a workspace containing multiple Intents or an external schema-valid Draft, launch
   `zintent workspace <workspace>` in an interactive TTY. Do not invent a canonical Intent or write
   zintent store files directly.
+- For post-approval import/recording without Spec Kit or implementation, use the `zintent-ingest`
+  Skill. It consumes only already-approved output.
 
 ## Invariants
 
