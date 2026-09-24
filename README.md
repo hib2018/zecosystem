@@ -63,6 +63,43 @@ zecosystem/
 - `skills/zintent/`: public `zintent` CLI/TUI を安全に利用する Meaning Gate 編成方針
 - `skills/zintent-ingest/`: 承認済み zintent 出力だけをProject/contextへ取り込み、Spec Kitや実装へ進めない方針
 - `skills/speckit-handoff/`: Approved Intent Snapshot から Project-owned Spec Kit specify workflow へ渡す方針
+- `skills/task-only/`: Spec Kit の spec/plan を省略する明示依頼時に、最小の `tasks.md` だけを作る方針
+
+## グローバルSkillとして使う手順
+
+Pi が読むグローバルSkillは通常 `~/.pi/agent/skills/` 配下です。このリポジトリには現時点で自動インストーラーはないため、`skills/` をグローバルに使う場合は手動でリンクまたはコピーします。
+
+推奨は、正本を `zecosystem/skills/` に残す symlink です。
+
+```sh
+mkdir -p ~/.pi/agent/skills
+for skill in /Users/hibik/dev/projects/zecosystem/skills/*; do
+  ln -sfn "$skill" "$HOME/.pi/agent/skills/$(basename "$skill")"
+done
+```
+
+コピーで固定したい場合:
+
+```sh
+mkdir -p ~/.pi/agent/skills
+cp -R /Users/hibik/dev/projects/zecosystem/skills/* ~/.pi/agent/skills/
+```
+
+同期確認:
+
+```sh
+for skill in /Users/hibik/dev/projects/zecosystem/skills/*; do
+  name=$(basename "$skill")
+  diff -q "$skill/SKILL.md" "$HOME/.pi/agent/skills/$name/SKILL.md"
+done
+```
+
+方針:
+
+- `zecosystem/skills/` を横断Skillの正本として扱う。
+- `~/.pi/agent/skills/` は Pi から利用するための配置先として扱う。
+- コピー運用では更新時に再コピーし、差分がないことを確認する。
+- zconfig など各ツール固有のSkillは、横断利用が確定するまで各ツールリポジトリに残す。
 
 ## 関連リポジトリとの境界
 
